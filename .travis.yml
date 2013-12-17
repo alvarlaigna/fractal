@@ -9,11 +9,10 @@ php:
 before_script:
   - composer self-update
   - composer install
-  - pyrus install pear/PHP_CodeSniffer
-  - phpenv rehash
+  - git clone git://github.com/squizlabs/PHP_CodeSniffer.git sniffer
 
 script:
-  - phpcs --standard=psr2 src/
+  - php sniffer/scripts/phpcs --standard=psr2 src/
   - phpunit --coverage-text
 
 matrix:
